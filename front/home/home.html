@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>TeamBuilder — Home (MVP)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="home.css">
+</head>
+<script src="home.js"></script>
+<body>
+  <header class="topbar">
+    <div class="brand">TeamBuilder</div>
+    <nav class="menu">
+      <a href="#" class="link">Perfil</a>
+      <a href="#" class="link">Meus Projetos</a>
+      <button id="newIdeaBtn" class="btn btn-primary">Nova Ideia</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Encontre Sua Equipe</h1>
+      <p>Busque colaboradores por habilidades, experiência ou localização.</p>
+      <div class="search-bar">
+        <input id="searchInput" type="search" placeholder="Ex.: React, DevOps, São Paulo..." />
+        <button id="searchBtn" class="btn">Buscar</button>
+      </div>
+      <div class="actions">
+        <button class="btn btn-outline" id="addMemberBtn">+ Adicionar Colaborador</button>
+        <button class="btn btn-outline">Explorar Equipes</button>
+        <button class="btn btn-outline">Filtros Avançados</button>
+      </div>
+    </section>
+
+    <section class="team">
+      <div class="team-head">
+        <h2>Sua Equipe</h2>
+        <span id="teamCount" class="badge">0 colaboradores</span>
+      </div>
+
+      <div id="teamGrid" class="grid"></div>
+
+      <template id="memberCardTpl">
+        <article class="card">
+          <div class="card-head">
+            <div class="avatar" data-initials=""></div>
+            <div class="info">
+              <h3 class="name"></h3>
+              <p class="role"></p>
+              <p class="xps"></p>
+            </div>
+            <span class="status-dot"></span>
+          </div>
+          <div class="specialties"></div>
+          <div class="skills"></div>
+          <p class="bio"></p>
+        </article>
+      </template>
+    </section>
+  </main>
+
+  <footer class="footer">© <span id="year"></span> TeamBuilder</footer>
+
+
+</body>
+</html>
