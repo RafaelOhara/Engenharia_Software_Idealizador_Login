@@ -59,14 +59,14 @@ def register(user_in: UserCreate):
 def login(user_in: UserLogin):
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
     cursor = conn.cursor()
-    cursor.execute("SELECT senha_hash FROM usuarios WHERE email = ?", (user_in.email,))
+    cursor.execute("SELECT senha_hash,user_id,nome_usuario FROM usuarios WHERE email = ?", (user_in.email,))
     row = cursor.fetchone()
     conn.close()
     if not row or not verify_password(user_in.password, row[0]):
         raise HTTPException(status_code=401, detail="Credenciais inválidas")
-    return {"access_token": "fake-token", "token_type": "bearer"}
+        user_id,_,nome_usuario = row
+        token_data = {"sub": user_in.email,"user_id":user_id, "nome_usuario": nome_usuario}
+        access_token = create_token(token_data)
+    return {"access_token": access_token,"token_type":"bearer"}
 
-    token_data = {"sub": user_in.email,"user_id":user_id, "nome_usuario": nome_usuario}
-    acess_token = create_token(token_data)
-    return {"access_token": access_token,"token_type:"bearer"}
 
