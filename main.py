@@ -64,10 +64,11 @@ def login(user_in: UserLogin):
     conn.close()
     if not row or not verify_password(user_in.password, row[0]):
         raise HTTPException(status_code=401, detail="Credenciais inválidas")
-        user_id,_,nome_usuario = row
-        token_data = {"sub": user_in.email,"user_id":user_id, "nome_usuario": nome_usuario}
-        access_token = create_token(token_data)
-        return {"access_token": access_token,"token_type":"bearer"}
+    user_id,_,nome_usuario = row
+    token_data = {"sub": user_in.email,"user_id":user_id, "nome_usuario": nome_usuario}
+    access_token = create_token(token_data)
+    return {"access_token": access_token,"token_type":"bearer"}
+
 
 
 
