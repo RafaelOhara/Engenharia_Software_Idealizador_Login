@@ -5,6 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from passlib.context import CryptContext
 import sqlite3
 from schemas import Token, UserCreate, UserOut, UserLogin
+from auth import create_token
 
 app = FastAPI()
 app.add_middleware(
@@ -64,4 +65,8 @@ def login(user_in: UserLogin):
     if not row or not verify_password(user_in.password, row[0]):
         raise HTTPException(status_code=401, detail="Credenciais inválidas")
     return {"access_token": "fake-token", "token_type": "bearer"}
-    
+
+    token_data = {"sub": user_in.email,"user_id":user_id, "nome_usuario": nome_usuario}
+    acess_token = create_token(token_data)
+    return {"access_token": access_token,"token_type:"bearer"}
+
