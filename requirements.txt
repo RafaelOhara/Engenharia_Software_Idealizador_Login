@@ -1,5 +1,4 @@
-fastapi
-uvicorn
-passlib
+fastapi==0.115.0
+uvicorn[standard]==0.30.0
+passlib 
 python-multipart
-sqlite3
