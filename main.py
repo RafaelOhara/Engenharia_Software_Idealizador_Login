@@ -67,7 +67,7 @@ def login(user_in: UserLogin):
     user_id,_,nome_usuario = row
     token_data = {"sub": user_in.email,"user_id":user_id, "nome_usuario": nome_usuario}
     access_token = create_token(token_data)
-    return {"access_token": access_token,"token_type":"bearer"}
+    return {"access_token": access_token, "token_type":"bearer"}
 
 
 

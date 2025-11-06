@@ -11,7 +11,8 @@ def criar_banco_de_dados():
         # Cria a tabela 'usuarios' se ela não existir.
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS usuarios (
-                cpf TEXT PRIMARY KEY,
+                user_id INTEGER PRIMARY KEY AUTOINCREMENT,            
+                cpf TEXT ,
                 nome TEXT NOT NULL,
                 sobrenome TEXT NOT NULL,
                 nome_usuario TEXT UNIQUE NOT NULL,
