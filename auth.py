@@ -28,4 +28,5 @@ def verify_token(token:str):
         raise HTTPException (
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="TOKEN INVALIDO OU EXPIRADO",
-            headers={"WWW-autheticate:Bearer"},)
+
+            headers={"WWW-Autheticate":"Bearer"},)
