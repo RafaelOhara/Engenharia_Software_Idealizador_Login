@@ -15,8 +15,12 @@ class UserLogin(BaseModel):
     password: str
 
 class UserOut(BaseModel):
-    id: int
     email: str
+
+
+class UserWithToken(BaseModel):
+    email: str
+    access_token: str
 
 class Token(BaseModel):
     access_token: str

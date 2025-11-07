@@ -11,12 +11,11 @@ def criar_banco_de_dados():
         # Cria a tabela 'usuarios' se ela não existir.
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS usuarios (
-                user_id INTEGER PRIMARY KEY AUTOINCREMENT,            
+                email TEXT PRIMARY KEY NOT NULL,
                 cpf TEXT ,
                 nome TEXT NOT NULL,
                 sobrenome TEXT NOT NULL,
                 nome_usuario TEXT UNIQUE NOT NULL,
-                email TEXT UNIQUE NOT NULL,
                 senha_hash TEXT NOT NULL,
                 telefone TEXT
             );
